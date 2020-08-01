@@ -1,0 +1,27 @@
+# Dependency directories
+node_modules
+bower_components
+dist
+
+# Optional npm cache directory
+.npm
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OSX
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Misc
+.publish
+
+# Environment variable
+.env
