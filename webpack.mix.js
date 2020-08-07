@@ -12,12 +12,12 @@ const srcDir = 'resources'
 const staticDir = 'static'
 const distDir = 'dist'
 
-const contentsJson = require('./resources/data/contents.json')
+const contentsJson = require(`./${srcDir}/data/contents.json`)
 const globalData = {
   $data: contentsJson,
-  $rootPath: path.resolve(__dirname, 'resources/views'),
-  $partials: path.resolve(__dirname, 'resources/views/partials') + '/',
-  $layouts: path.resolve(__dirname, 'resources/views/layouts') + '/',
+  $rootPath: path.resolve(__dirname, `${srcDir}/views`),
+  $partials: path.resolve(__dirname, `${srcDir}/views/partials`) + '/',
+  $layouts: path.resolve(__dirname, `${srcDir}/views/layouts`) + '/',
   $timestamp: Date.now(),
 }
 
@@ -26,6 +26,15 @@ Mix.manifest.refresh = (_) => void 0
 
 // Mix Webpack Override
 const ASSET_PATH = process.env.ASSET_PATH || '/'
+const BASE_PATH = process.env.BASE_PATH || '/'
+const RESOURCES_PATH = {
+  script: `${srcDir}/assets/js/app.js`,
+  style: `${srcDir}/assets/css/styles.scss`,
+}
+const DIST_PATH = {
+  script: `${distDir}${ASSET_PATH}/assets/js/bundle.js`,
+  style: `${distDir}${ASSET_PATH}/assets/css/styles.css`,
+}
 mix
   .setPublicPath('dist/')
   .clean()
@@ -53,23 +62,23 @@ mix
       }),
     ],
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, `${distDir}`),
       publicPath: ASSET_PATH,
     },
   })
-  .js(`${srcDir}/assets/js/app.js`, `${distDir}/assets/js/bundle.js`)
-  .sass(`${srcDir}/assets/css/styles.scss`, `${distDir}/assets/css/styles.css`, {
+  .js(RESOURCES_PATH.script, DIST_PATH.script)
+  .sass(RESOURCES_PATH.style, DIST_PATH.style, {
     sassOptions: {
-      outputStyle: 'compressed',
+      // outputStyle: '',
     },
   })
   .options({
+    processCssUrls: false,
     postCss: [
       require('postcss-flexbugs-fixes'),
       require('autoprefixer')({
         grid: true,
       }),
-      require('css-mqpacker')(),
       require('css-declaration-sorter')({
         order: 'smacss',
       }),
@@ -88,8 +97,9 @@ mix
     })
   })
   .browserSync({
+    startPath: BASE_PATH,
     proxy: false,
-    server: 'dist/',
+    server: `${distDir}`,
     files: [`${distDir}/**/*.{css,js,html,php}`],
   })
 
@@ -98,5 +108,6 @@ if (mix.inProduction()) {
     cssNano: {
       // discardComments: {removeAll: true},
     },
+    postCss: [require('css-mqpacker')()],
   })
 }
