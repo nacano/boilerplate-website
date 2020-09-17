@@ -7,9 +7,9 @@ import SampleComponent from './components/SampleComponent';
 document.addEventListener('DOMContentLoaded', () => {
   SampleComponent();
 
-  const ppp = new InViewObserver(null, {});
+  const ppp = new InViewObserver('.inview');
   ppp.watch();
-  ppp.unwatch((el) => {
-    console.log(el);
-  });
+  // ppp.unwatch((el) => {
+  //   console.log(el);
+  // });
 });

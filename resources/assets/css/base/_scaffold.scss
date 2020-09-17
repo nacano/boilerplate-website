@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  margin-top: 100vh;
+  margin-top: 80vh;
   margin-bottom: 50vh;
   color: $text-color;
   font-weight: 400;
@@ -90,7 +90,7 @@ sup {
   vertical-align: super;
 }
 
-[data-inview='true'] {
+.inview {
   position: relative;
   display: inline-flex;
   color: transparent;
@@ -106,12 +106,13 @@ sup {
     content: '';
   }
 
-  // &.aos-animate {
-  //   animation: block-reveal-text 1.5s forwards;
-  //   &::after {
-  //     animation: block-reveal-background 1.5s $easeInOutQuad;
-  //   }
-  // }
+  &[data-inviewed] {
+    visibility: visible;
+    animation: block-reveal-text 1.5s forwards;
+    &::after {
+      animation: block-reveal-background 1.5s $easeInOutQuad;
+    }
+  }
 
   @keyframes block-reveal-background {
     0% {
