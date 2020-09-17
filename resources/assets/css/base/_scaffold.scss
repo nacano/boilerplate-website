@@ -3,6 +3,8 @@ html {
 }
 
 body {
+  margin-top: 100vh;
+  margin-bottom: 50vh;
   color: $text-color;
   font-weight: 400;
   font-size: 16px;
@@ -27,6 +29,7 @@ img {
   height: auto;
   vertical-align: bottom;
   user-select: none;
+  -webkit-user-drag: none;
 }
 
 small {
@@ -85,4 +88,53 @@ p {
 sup {
   font-size: smaller;
   vertical-align: super;
+}
+
+[data-inview='true'] {
+  position: relative;
+  display: inline-flex;
+  color: transparent;
+
+  &::after {
+    position: absolute;
+    top: 0px;
+    right: 100%;
+    bottom: 0px;
+    left: 0%;
+    z-index: 1;
+    background-color: black;
+    content: '';
+  }
+
+  // &.aos-animate {
+  //   animation: block-reveal-text 1.5s forwards;
+  //   &::after {
+  //     animation: block-reveal-background 1.5s $easeInOutQuad;
+  //   }
+  // }
+
+  @keyframes block-reveal-background {
+    0% {
+      right: 100%;
+      left: 0%;
+    }
+    50% {
+      right: 0%;
+      left: 0%;
+    }
+    100% {
+      right: 0%;
+      left: 100%;
+    }
+  }
+  @keyframes block-reveal-text {
+    0%,
+    50% {
+      color: transparent;
+    }
+    50.00001%,
+    100% {
+      color: black;
+    }
+  }
 }

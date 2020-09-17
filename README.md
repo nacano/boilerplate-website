@@ -19,6 +19,8 @@ Compile the code of EJS, SCSS and Babel.
 
 - If your project has coding guidelines, change the configuration file to suit your environment.
 
+- Project settings should be added to `.env` and not registered in git.(Please refer to the sample configuration to create your own.)
+
 - The dist directory are only html verified, so the developer is responsible for checking the generated files.
 
 - Please run `yarn lint` and `yarn test` frequently to ensure the quality of your source code.
@@ -51,3 +53,15 @@ Customize it to fit your project!
 | resources |                                                                                                                                          |
 | static    | Stores files that do not need to be built. This directory will be copied into the dist directory.                                        |
 | dist      | A copy of the static directory and the built result of the resources directory are generated. The test server references this directory. |
+
+## Sample Configuration
+
+### .env
+
+For example, Path and API_KEY settings.
+
+```.env
+ASSET_PATH = '/sample'
+BASE_PATH = '/sample'
+MAP_API_KEY = 'xxxx'
+```

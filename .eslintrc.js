@@ -11,6 +11,6 @@ module.exports = {
   },
   ignorePatterns: ['static/**/*.js'],
   rules: {
-    'prettier/prettier': ['error', { singleQuote: true, semi: false }],
+    'prettier/prettier': ['error', { singleQuote: true, semi: true }],
   },
-}
+};

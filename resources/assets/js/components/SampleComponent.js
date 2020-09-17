@@ -2,5 +2,5 @@
  * Component
  */
 export default function () {
-  console.log('SampleComponent')
+  console.log('SampleComponent');
 }

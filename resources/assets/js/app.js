@@ -1,8 +1,15 @@
 /**
  * Bundle script
  */
-import SampleComponent from './components/SampleComponent'
+import { InViewObserver } from './components/InViewObserver';
+import SampleComponent from './components/SampleComponent';
 
 document.addEventListener('DOMContentLoaded', () => {
-  SampleComponent()
-})
+  SampleComponent();
+
+  const ppp = new InViewObserver(null, {});
+  ppp.watch();
+  ppp.unwatch((el) => {
+    console.log(el);
+  });
+});
