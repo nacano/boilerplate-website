@@ -1,7 +1,12 @@
-<%- include($layouts + '_page-header'); _%>
-
-<%= $timestamp; %>
-<%- include($partials + '_header'); %>
+<% var meta = {
+  title: 'Top page title',
+  desc: 'Top page description',
+  ogp: true,
+  ogUrl: $data.site_url,
+  ogImage: $data.site_url + '/img/ogp.png',
+}; _%>
+<%- include($layouts + '_page-header', { pageMeta: meta }); _%>
+<%- include($partials + '_header'); _%>
 
 <h1 class="inview">
   <span>Welcome Root page</span>

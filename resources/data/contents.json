@@ -1,16 +1,5 @@
 {
-  "pages": [
-    {
-      "id": "top",
-      "title": "test title",
-      "discription": "test discription"
-    },
-    {
-      "id": "child",
-      "title": "child title",
-      "discription": "child discription"
-    }
-  ],
+  "site_url": "https://nilfind.uno",
   "nav": [
     {
       "id": "top",

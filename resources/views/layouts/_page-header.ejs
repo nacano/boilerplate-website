@@ -1,6 +1,7 @@
+<% if (typeof pageMeta === 'undefined') { var pageMeta = {}; } _%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<%- include($layouts + '_head-default'); %>
+<%- include($layouts + '_head-default', { meta: pageMeta }); _%>
 </head>
 <body>

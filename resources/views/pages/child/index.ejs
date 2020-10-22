@@ -1,6 +1,15 @@
-<%- include($layouts + '_page-header'); _%>
-<%= $timestamp; %>
-<%- include($partials + '_header'); %>
+<% var meta = {
+  title: 'Child page title',
+  desc: 'Child page description',
+  ogp: true,
+  ogUrl: $data.site_url + '/child',
+  ogTitle: 'Child page og title',
+  ogDesc: 'Child page og description',
+  ogImage: $data.site_url + '/img/ogp.png',
+  ogType: 'article',
+}; _%>
+<%- include($layouts + '_page-header', { pageMeta: meta }); _%>
+<%- include($partials + '_header'); _%>
 <h1>
   Welcome child page
 </h1>
